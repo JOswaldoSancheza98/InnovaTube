@@ -17,7 +17,9 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script async src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+   
     <script type="text/javascript">
     var onloadCallback = function() {
         alert("grecaptcha is ready!");
@@ -25,29 +27,30 @@
     </script>
 </head>
 
-<body>
+<body class="bg-dark">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm fs-5">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ _('InnovaTube') }}
-                </a>
+            @auth
+            <span class="text-primary">Innova<strspanong class="text-danger">Tube</strong></span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Buscar Videos</a>
+                            <a class="nav-link " href="{{ route('home') }}">Buscar videos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Mis Favoritos</a>
+                            <a class="nav-link" href="{{ route('favorites.show') }}">Mis favoritos</a>
                         </li>
                     </ul>
+                    @endauth
 
 
                     <!-- Right Side Of Navbar -->
@@ -56,7 +59,7 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar session') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                         </li>
                         @endif
 
@@ -73,9 +76,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Cerrar sessión') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

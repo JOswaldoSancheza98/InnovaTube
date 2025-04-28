@@ -58,6 +58,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'g-recaptcha-response' => 'required',
         ], [
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
             'password.confirmed' => 'Las contraseñas no coinciden, por favor inténtalo de nuevo.',
             'g-recaptcha-response.required' => 'Por favor, verifica que no eres un robot.',
         ]);

@@ -9,6 +9,14 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
+                        <div class="row mb-4 align-items-center justify-content-center">
+                            <div class="col-auto">
+                                <h2 class="display-4 text-center mb-0">
+                                    <span class="text-primary">Innova</span><strong class="text-danger">Tube</strong>
+                                    <!-- <small class="d-block text-muted fs-6">Tu Blibioteca Digital Videos</small> -->
+                                </h2>
+                            </div>
+                        </div>
                         @csrf
 
                         <div class="row mb-3">
@@ -102,7 +110,7 @@
                             <div class="col-md-6">
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
-                                    required autocomplete="new-password">
+                                    required autocomplete="new-password" value="{{ old('password') }}">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -139,22 +147,24 @@
 
 
                             </div>
+                        </div>
+                
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Registrar') }}
-                                    </button>
-                                </div>
-                            </div>
-                    </form>
+                <div class="row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Registrar') }}
+                        </button>
+                    </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+</div>
 @push('scripts')
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endpush
 
 @if (session('error'))

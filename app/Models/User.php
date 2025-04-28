@@ -50,8 +50,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function favoriteVideos()
-{
-    return $this->hasMany(FavoriteVideo::class);
-}
+    // Definir la relación con los favoritos (un usuario puede tener muchos favoritos)
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }
